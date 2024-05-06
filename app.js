@@ -1,8 +1,10 @@
+let minutes = 0;
 let seconds = 0;
 let tens = 0;
+const outputMinutes = document.getElementById('minute');
 const outputSeconds = document.getElementById('second');
 const outputTens = document.getElementById('tens');
-const timerContainer = document.getElementById('timer-container'); 
+const timerContainer = document.getElementById('timer-container');
 let interval;
 
 const buttonStart = document.getElementById('btn-start');
@@ -13,7 +15,7 @@ if (buttonStart) {
   buttonStart.addEventListener('click', () => {
     clearInterval(interval);
     interval = setInterval(startTimer, 10);
-    timerContainer.classList.add('running'); 
+    timerContainer.classList.add('running');
   });
 } else {
   console.error("Button with ID 'btn-start' not found!");
@@ -22,7 +24,7 @@ if (buttonStart) {
 if (buttonStop) {
   buttonStop.addEventListener('click', () => {
     clearInterval(interval);
-    timerContainer.classList.remove('running'); 
+    timerContainer.classList.remove('running');
   });
 } else {
   console.error("Button with ID 'btn-stop' not found!");
@@ -31,8 +33,10 @@ if (buttonStop) {
 if (buttonReset) {
   buttonReset.addEventListener('click', () => {
     clearInterval(interval);
-    tens = 0;
+    minutes = 0;
     seconds = 0;
+    tens = 0;
+    outputMinutes.innerHTML = "00";
     outputSeconds.innerHTML = "00";
     outputTens.innerHTML = "00";
     timerContainer.classList.remove('running');
@@ -55,5 +59,12 @@ function startTimer() {
     outputSeconds.innerHTML = seconds > 9 ? seconds : "0" + seconds;
     tens = 0;
     outputTens.innerHTML = "00";
+  }
+
+  if (seconds > 59) {
+    minutes++;
+    outputMinutes.innerHTML = minutes > 9 ? minutes : "0" + minutes;
+    seconds = 0;
+    outputSeconds.innerHTML = "00";
   }
 }
