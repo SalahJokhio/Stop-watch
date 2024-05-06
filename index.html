@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stopwatch</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="main">
+  <video autoplay muted loop id="video-background">
+    <source src="/videoplayback.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <div id="timer-container">
+    <span id="second">00</span>:<span id="tens">00</span>
+  </div>
+
+  <div id="buttons" style="text-align: center; margin-top: 20px;">
+    <button id="btn-start">Start</button>
+    <button id="btn-stop">Stop</button>
+    <button id="btn-reset">Reset</button>
+  </div>
+  <h3>Made by: Thekeydaar</h3>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
